@@ -6,6 +6,23 @@
     <title>Thai movie</title>
 </head>
 <h1>Thai Series Movie</h1><hr>
+    <ul>
+  <li>  <a href="index.html">HOME <i class="bi bi-house-door-fill"></i></a></li>
+  <li>
+    <a href="">Movie <i class="bi bi-chevron-double-down"></i></a>
+    <ul class="dropdown">
+        <li><a href="blseries.html"><h6>Bl Series Move</h6></a></li>
+        <li><a href="thai.html"><h6>Thaqi Series Movie</h6></a></li>
+        <li><a href="korean.html"><h6>Korean Series Movie</h6></a></li>
+        <li><a href="action.html"><h6>.Action Movie</h6></a></li>
+    </ul>
+  </li>
+  <li><a href="">Contact us</a></li>
+  <li><a href="">About </a></li>
+</ul>
+
+
+<hr>
 <body>
     <div class="container">
         <dv class="wrapper">
@@ -44,5 +61,43 @@
     h4{
         font-size: 12px;
     }
+    *{
+    padding: 0;
+    margin: 0;
+    font-family: monospace;
+}
+ul{
+    list-style: none;
+    background: gray;
+}
+ul li{
+    display: inline-block;
+    position: relative ;
+}
+ul li a{
+    display: block;
+    padding: 20px 25px;
+    color: aliceblue;
+    text-decoration: none;
+    text-align: center;
+    font-size: 15px;
+}
+ul li ul.dropdown li {
+    display: block;
+}
+ul li ul.dropdown  {
+    display: none;
+    width: 100%;
+    background: orange;
+    z-index: 999;
+    position: absolute;
+}
+ul li:hover{
+background: gray;
+}
+ul li:hover ul.dropdown {
+display: block;
+}
+
 </style>
 </html>
