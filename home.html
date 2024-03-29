@@ -9,9 +9,15 @@
 </head>
 
 
-    <h1>Movie City</h1>
+ <div class="baby">
+<h1>Movie City</h1>
+<button id="increaseBtn" style="font-size: 10px;color: black;"><i class="bi bi-suit-heart-fill"></i> Subscribe</button>
+<div id="activeNumber" style="font-size: 14px;">0</div>
+
+<button id="decreaseBtn"hidden>Decrease</button>
+</div>
    
-</div><br>
+
     <div class="all">
 <ul>
   <li>  <a href="index.html"><h5>HOME <i class="bi bi-house-door-fill"></i></h5></a></li>
@@ -201,12 +207,31 @@
     <a href="" style="color: black;"><img src="" width="100px"></a>  
   </div>
 <style>
-    body{
-       background-size:100% ;
-       background-color: black;
-       
-        
-    }
+     body{
+    background-color: black;
+  }
+   .baby{
+    background-color: black;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    height: 100px;
+    
+   }
+   h1{
+    color: antiquewhite;
+   }
+   #increaseBtn{
+    margin-left: 30%;
+    border-radius: 20px;
+    color: antiquewhite;
+    background-color: rgb(230, 236, 55);
+   }
+   #activeNumber{
+    color: white;
+    margin-right: 20px;
+   }
+
     .ads{
       height: 120px;
       background-color: azure;
@@ -223,15 +248,7 @@
      margin-top: 90px;
       color: black;
     }
-    h1{ 
-        height:80px;
-        align-items: center;
-        justify-content: center;
-        display: grid;
-        background-color: black;
-        color: chocolate;
-       
-    }
+   
     .all{
      font-size: 10px;
     }
