@@ -219,6 +219,7 @@
     
    }
    h1{
+       font-size: 20px;
     color: antiquewhite;
    }
    #increaseBtn{
@@ -411,7 +412,37 @@ display: block;
 </style>
 <script>
   
- 
+ document.addEventListener('DOMContentLoaded', function() {
+    // Get the necessary elements
+    const activeNumberElement = document.getElementById('activeNumber');
+    const increaseButton = document.getElementById('increaseBtn');
+    const decreaseButton = document.getElementById('decreaseBtn');
+
+    // Initial subscriber count
+    let activeNumber = 120;
+
+    // Function to update the display
+    function updateDisplay() {
+        activeNumberElement.textContent = activeNumber;
+    }
+
+    // Function to handle increase button click
+    increaseButton.addEventListener('click', function() {
+        activeNumber++;
+        updateDisplay();
+    });
+
+    // Function to handle decrease button click
+    decreaseButton.addEventListener('click', function() {
+        if (activeNumber > 0) {
+            activeNumber--;
+            
+        }
+    });
+
+    // Update the display initially
+    updateDisplay("activeNumber");
+});
 
     </script>
 </html>
