@@ -4,12 +4,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>User Search</title>
+<title>Add Friends</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="search-container">
-  <h2>User Search</h2>
+  <h2>Add Friends</h2>
   <input type="text" id="search-input" placeholder="Enter username...">
   <button id="search-button">Search</button>
   <div id="search-results"></div>
@@ -20,19 +20,20 @@ document.addEventListener("DOMContentLoaded", function() {
   const searchInput = document.getElementById('search-input');
   const searchButton = document.getElementById('search-button');
   const searchResults = document.getElementById('search-results');
+  const friendsList = []; // List to store added friends
 
   searchButton.addEventListener('click', function() {
     const searchTerm = searchInput.value.trim();
     if (searchTerm !== '') {
       // Perform search (dummy data)
-      const profiles = [
-        { username: 'user1', fullName: 'User One' },
-        { username: 'user2', fullName: 'User Two' },
-        { username: 'user3', fullName: 'User Three' },
-        { username: 'user4', fullName: 'User Four' },
-        { username: 'user5', fullName: 'User Five' },
+      const users = [
+        { id: 1, username: 'user1', fullName: 'User One' },
+        { id: 2, username: 'user2', fullName: 'User Two' },
+        { id: 3, username: 'user3', fullName: 'User Three' },
+        { id: 4, username: 'user4', fullName: 'User Four' },
+        { id: 5, username: 'user5', fullName: 'User Five' },
       ];
-      const results = profiles.filter(profile => profile.username.toLowerCase().includes(searchTerm.toLowerCase()));
+      const results = users.filter(user => user.username.toLowerCase().includes(searchTerm.toLowerCase()));
       displayResults(results);
     } else {
       // Clear previous search results
@@ -46,7 +47,13 @@ document.addEventListener("DOMContentLoaded", function() {
       const ul = document.createElement('ul');
       results.forEach(result => {
         const li = document.createElement('li');
+        const addButton = document.createElement('button');
+        addButton.textContent = 'Add';
+        addButton.addEventListener('click', function() {
+          addFriend(result);
+        });
         li.textContent = `${result.fullName} (${result.username})`;
+        li.appendChild(addButton);
         ul.appendChild(li);
       });
       searchResults.appendChild(ul);
@@ -56,55 +63,20 @@ document.addEventListener("DOMContentLoaded", function() {
       searchResults.appendChild(p);
     }
   }
+
+  function addFriend(user) {
+    if (!friendsList.find(friend => friend.id === user.id)) {
+      friendsList.push(user);
+      alert(`Added ${user.fullName} to your friends list.`);
+    } else {
+      alert(`You've already added ${user.fullName} as a friend.`);
+    }
+  }
 });
 
 </script>
 </body>
 <style>
-    /* styles.css */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-.search-container {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-input[type="text"] {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-#search-results {
-  margin-top: 20px;
-}
 
 </style>
 </html>
