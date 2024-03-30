@@ -96,6 +96,7 @@ document.addEventListener("DOMContentLoaded", function() {
           const img = document.createElement('img');
           img.src = URL.createObjectURL(file);
           img.style.maxWidth = '100%';
+            video.controls = true;
           postItem.appendChild(img);
         } else if (mediaType === 'video') {
           const video = document.createElement('video');
