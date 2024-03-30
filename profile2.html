@@ -20,9 +20,9 @@
             <h2 id="username"></h2>
             <p id="profile-bio">Welcome to Movie City....</p>
             <div id="social-links">
-                <a href="#" class="social-link">Facebook</a>
-                <a href="#" class="social-link">Twitter</a>
-                <a href="#" class="social-link">Instagram</a>
+                <a href="sarch user.html" class="social-link"><i class="bi bi-person-fill-add"></i></a>
+                <a href="home.html" class="social-link"><i class="bi bi-play-btn-fill"></i></a>
+                <a href="chat.html" class="social-link"><i class="bi bi-messenger"></i></a>
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
             <div class="post-list" id="post-list">
                 <!-- Posts will be displayed here -->
               </div>
-          <span>Username</span>
+          <span></span>
           <input type="text" id="username-input" placeholder="username">
           <input type="file" id="media-input" accept="image/*, video/*">
           <textarea id="post-text" placeholder="Write something..."></textarea>
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const mediaType = file.type.split('/')[0]; // 'image' or 'video'
         if (mediaType === 'image') {
           const img = document.createElement('img');
-          img.src = URL.createObjectURL(file);
+          
           img.style.maxWidth = '100%';
           postItem.appendChild(img);
         } else if (mediaType === 'video') {
@@ -111,22 +111,14 @@ document.addEventListener("DOMContentLoaded", function() {
       postActions.classList.add('post-actions');
       const commentButton = document.createElement('button');
       commentButton.textContent = 'Comment';
+      
       commentButton.addEventListener('click', function() {
         showCommentForm(postItem);
+   
       });
-      const shareButton = document.createElement('button');
-      shareButton.textContent = 'Share';
-      shareButton.addEventListener('click', function() {
-        alert('Post shared!');
-      });
-      const deleteButton = document.createElement('button');
-      deleteButton.textContent = 'Delete';
-      deleteButton.addEventListener('click', function() {
-        postItem.remove();
-      });
+      
       postActions.appendChild(commentButton);
-      postActions.appendChild(shareButton);
-      postActions.appendChild(deleteButton);
+     
       postItem.appendChild(postActions);
 
       // Add post item to list
@@ -210,8 +202,24 @@ const savedUsername = localStorage.getItem('username');
     padding: 0;
     background-color: #f0f0f0;
 }
-
-
+#username-input{
+  margin-left:80px ;
+}
+#media-input{
+  margin-top: 20px;
+  margin-left: 80px;
+}
+#post-text{
+  margin-left: 80px;
+  margin-top: 20px;
+}
+#post-button{
+  
+  margin-left: 140px;
+  align-items: center;
+  justify-content: center;
+  display: grid;
+}
 .post-container {
    
   max-width: 600px;
@@ -234,6 +242,7 @@ const savedUsername = localStorage.getItem('username');
   padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
+  font-size: 8px;
   align-items: center;
   justify-content: center;
   display: grid;
