@@ -35,8 +35,21 @@
        
         </div>
 
-   
-   
+        <footer class="footer">
+            <div class="footer-container">
+              <div class="footer-logo">
+                <img src="movielogo.jpg" id="logo" alt="Logo">
+              </div>
+              <div class="footer-links">
+                <ul>
+                  <li><a href="home.html">Movie</a></li>
+                  <li><a href="">About Us</a></li>
+                  <li><a href="#">Services</a></li>
+                  <li><a href="#">Contact</a></li>
+                </ul>
+              </div>
+              
+   </footer>
     <script>
         // Update profile information
 document.addEventListener("DOMContentLoaded", function() {
@@ -49,7 +62,7 @@ const savedUsername = localStorage.getItem('username');
     document.getElementById('username').textContent = savedUsername;
   } else {
     // If username is not found, redirect to login page
-    window.location.href = 'profile.html';
+    window.location.href = 'index.html';
   }
   const defaultBtn = document.querySelector("#default-btn")
     const customBtn =document.querySelector("#custom-btn")
@@ -73,22 +86,25 @@ const savedUsername = localStorage.getItem('username');
 </body>
 <style>
     
-    body {
+    body{
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
 }
-
+#logo{
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+}
 
 #profile-picture {
     margin-top: 20px;
     margin-left: 10px;
     background-image: url(movielogo.jpg) ;
     background-size: 100% 100%;
-    width: 85px;
-    height: 85px;
-    m
+    width: 80px;
+    height: 80px;
     background-color: #ddd;
     border-radius: 50%;
     margin-right: 20px;
@@ -116,6 +132,42 @@ const savedUsername = localStorage.getItem('username');
 
 .social-link:hover {
     text-decoration: underline;
+}
+.footer {
+    margin-top: 100%;
+  background-color: gray;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.footer-links ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.footer-links ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-social a img {
+  width: 30px;
+  margin-left: 10px;
 }
 
 </style>
