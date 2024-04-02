@@ -11,12 +11,18 @@
 
  <div class="baby">
 <h1>Movie City</h1>
-<button id="increaseBtn" style="font-size: 11px;color: black;">Subscriber</button>
-<div id="activeNumber" style="font-size: 14px;">0</div>
 
-<button id="decreaseBtn"hidden>Decrease</button>
 </div>
-   
+   <div class="search-container">
+  <input type="text" id="searchInput" placeholder="Enter search term">
+  <button onclick="search()">Search</button>
+</div>
+
+<div id="resultsContainer">
+  <h2></h2>
+  <ul id="videoList"></ul>
+  <div id="photoList"></div>
+</div>
 
     <div class="all">
 <ul>
@@ -210,6 +216,26 @@
      body{
     background-color: black;
   }
+    /* CSS for styling */
+  .search-container {
+    margin-right: 200px;
+      margin-bottom: 20px;
+    }
+    #videoList {
+      list-style-type: none;
+      padding: 0;
+    }
+    .video-item, .photo-item {
+      margin-bottom: 10px;
+    }
+    .video-item a, .photo-item a {
+      text-decoration: none;
+      color: #333;
+    }
+    .photo-item img {
+      max-width: 200px;
+      max-height: 150px;
+    }
    .baby{
     background-color: black;
     align-items: center;
@@ -412,7 +438,164 @@ display: block;
 }
 </style>
 <script>
-  
+// Data for videos and photos
+const data = {
+      videos: {
+        "mummies": "https://t.me/moviecd69/7",
+        "new groove": "https://t.me/moviecd69/8",
+        "mary": "https://t.me/moviecd69/13",
+        "trollhunter": "https://t.me/moviecd69/15",
+        "demon slayer": "",
+        "tinkerbell": "",
+        "mario": "https://t.me/moviecd69/16'",
+
+        "next gen": "https://t.me/moviecd69/17",
+        "spiderman": "https://t.me/moviecd69/18",
+        "justin league": "",
+        "demon": "",
+        "suzume": "",
+        "monster": "",
+        "secret magic": "https://t.me/moviecd69/27",
+        "crop bride": "",
+        "orion dark": "https://t.me/moviecd69/5",
+        "apothecary": "",
+        "nightdragon1": "https://t.me/moviecd69/21",
+        "nightdragon2": "https://t.me/moviecd69/22",
+        "nightdragon3": "https://t.me/moviecd69/23",
+        "epic": "https://t.me/moviecd69/25",
+        "gravecrooda": "https://t.me/moviecd69/31",
+        "horton": "",
+        "japanese": "",
+        "kubo": "https://t.me/moviecd69/26",
+        "luca": "",
+        "monkey king": "https://t.me/moviecd69/24",
+        "one piece": "",
+        "onward": "",
+        "inside out": "",
+        "rava": "",
+        "ron usterka": "",
+        "sherk": "",
+        "solo": "",
+        "tarnet ninja": "",
+        "tiger": "",
+        "white snake": "",
+        "wish": "",
+        "your name": "",
+        "zoopia": "",
+        "Bl Series": "",
+        "koran movie": "",
+        "Thai movie": "",
+        "Action movie": "",
+        "download": "",
+        "": "",
+        "": "",
+      },
+      photos: {
+        "mummies": "386858988_893922365637298_8110673454419218168_n.jpg",
+        "new groove": "405311325_926970268794464_8163500426272443021_n.jpg",
+        "mary": "431091445_400600572573720_3077744722514038230_n.jpg",
+        "trollhunter": "431129089_775928704597597_6790029122865871133_n.jpg",
+        "demon slayer": "431825416_804004501576085_4632826510200566490_n.jpg",
+        "tinkerbell": "431859914_748558630587229_3763972619832872572_n.jpg",
+        "mario": "431893979_321126797258658_6031257590264667220_n.jpg",
+
+        "next gen": "431981307_796693849017581_1867501342592707099_n.jpg",
+        "spiderman": "429560716_3635954883399557_5124362752109399643_n.jpg",
+        "justin league": "431781560_3296180170683279_2430352733041426108_n.jpg",
+        "demon": "431800713_2151494261878464_4795251767816913570_n.jpg",
+        "suzume": "431861080_1586601672164132_2484623096755520349_n.jpg",
+        "monster": "431864261_1790960851415788_2409806202664699867_n.jpg",
+        "secret magic": "431937599_1911983722603527_8169345835656616041_n.jpg",
+        "crop bride": "431992845_2471759389686974_6790397649213737512_n.jpg",
+        "orion dark": "dark.jpg",
+        "apothecary": "diaries.jpg",
+        "nightdragon1": "dragon.jpg",
+        "nightdragon2": "dragon2.jpg",
+        "nightdragon3": "dragon3.jpg",
+        "epic": "epic.jpg",
+        "grave": "grave.jpg",
+        "crooda": "groods.jpg",
+        "horton": "horton.jpg",
+        "japanese": "japan.jpg",
+        "kubo": "kubo.jpg",
+        "luca": "luca.jpg",
+        "monkey king": "monkey king.jpg",
+        "one piece": "one piece.jpg",
+        "onward": "onward.jpg",
+        "inside out": "out.jpg",
+        "rava": "rava.jpg",
+        "ron usterka": "RON.jpg",
+        "sherk": "shrek.jpg",
+        "solo": "solo.jpg",
+        "tarnet ninja": "tarnet ninja.jpg.jpg",
+        "tiger": "tiger.jpg",
+        "white snake": "white snake.jpg",
+        "wish": "wish.jpg",
+        "your name": "your name.jpg",
+        "zoopia": "zootopia.jpg",
+        "Bl Series": "bl1.jpg",
+        "koran movie": "",
+        "Thai movie": "thai1.jpg",
+        "Action movie": "",
+        "download": "download.html",
+        "": "",
+        "": "",
+      }
+    };
+
+    function search() {
+      const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+      const videoList = document.getElementById('videoList');
+      const photoList = document.getElementById('photoList');
+      videoList.innerHTML = '';
+      photoList.innerHTML = '';
+
+      // Search for matching videos
+      for (const [videoName, videoLink] of Object.entries(data.videos)) {
+        if (videoName.includes(searchTerm)) {
+          const listItem = document.createElement('li');
+          listItem.className = 'video-item';
+
+          const link = document.createElement('a');
+          link.href = videoLink;
+          link.textContent = videoName;
+
+          listItem.appendChild(link);
+          videoList.appendChild(listItem);
+        }
+      }
+
+      // Search for matching photos
+      for (const [photoName, photoLink] of Object.entries(data.photos)) {
+        if (photoName.includes(searchTerm)) {
+          const photoItem = document.createElement('div');
+          photoItem.className = 'photo-item';
+
+          const link = document.createElement('a');
+          link.href = photoLink;
+
+          const image = document.createElement('img');
+          image.src = photoLink;
+          image.alt = photoName;
+
+          link.appendChild(image);
+          photoItem.appendChild(link);
+          photoList.appendChild(photoItem);
+        }
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+    
  document.addEventListener('DOMContentLoaded', function() {
     // Get the necessary elements
     const activeNumberElement = document.getElementById('activeNumber');
