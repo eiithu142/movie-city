@@ -562,7 +562,7 @@ function getClickCount() {
     var viewCount = getViewCount();
     viewCount++;
     localStorage.setItem(userId + '_viewCount', viewCount);
-    document.getElementById('view-counter').innerText = 'View count: ' + viewCount;
+    document.getElementById('view-counter').innerText = '' + viewCount;
   }
 
   // Show view count for the current user when page loads
