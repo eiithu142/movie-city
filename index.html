@@ -13,10 +13,10 @@
 <h1>Movie City</h1>
 <div class="view"><i class="bi bi-eye"></i></div>
 
-<div class="view-count-container">
+<div class="view-count-container"><i class="bi bi-eye"></i>
   <div class="view-count" id="view-counter"></div>
+  <div class="view-count" id="total-view-counter"></div>
 </div>
-
 </div>
    <div class="search-container">
   <input type="text" id="searchInput" placeholder="Enter search term">
@@ -479,33 +479,107 @@ display: block;
 }
 </style>
 <script>
-    // Function to increment click count
-function incrementClick() {
-    var clickCount = localStorage.getItem('clickCount');
-    if (!clickCount) {
-      clickCount = 0;
-    }
-    clickCount++;
-    localStorage.setItem('clickCount', clickCount);
-    document.getElementById('click-counter').innerText = ' ' + clickCount;
+
+
+// Function to retrieve view count for the current user
+  function getViewCount(userId) {
+    var viewCount = localStorage.getItem(userId + '_viewCount');
+    return viewCount ? parseInt(viewCount) : 0;
   }
 
-  // Function to increment view count
-  function incrementView() {
-    var viewCount = localStorage.getItem('viewCount');
-    if (!viewCount) {
-      viewCount = 0;
-    }
+  // Function to increment view count for the current user
+  function incrementView(userId) {
+    var viewCount = getViewCount(userId);
     viewCount++;
-    localStorage.setItem('viewCount', viewCount);
-    document.getElementById('view-counter').innerText = '' + viewCount;
+    localStorage.setItem(userId + '_viewCount', viewCount);
+    document.getElementById('view-counter').innerText = 'Your view count: ' + viewCount;
+    updateTotalViewCount();
   }
 
-  // Increment view count when page loads
+  // Function to update total view count
+  function updateTotalViewCount() {
+    var totalViewCount = 0;
+    // Loop through localStorage to get view counts of all users
+    for (var i = 0; i < localStorage.length; i++) {
+      var key = localStorage.key(i);
+      if (key.endsWith('_viewCount')) {
+        totalViewCount += parseInt(localStorage.getItem(key));
+      }
+    }
+    document.getElementById('total-view-counter').innerText = 'Total view count: ' + totalViewCount;
+  }
+
+  // Show view count for the current user and total view count when page loads
   window.onload = function() {
-    incrementView();
+    var userId = "user1"; // Assuming each user has a unique identifier
+    var viewCount = getViewCount(userId);
+    document.getElementById('view-counter').innerText = 'Your view count: ' + viewCount;
+    updateTotalViewCount();
+    incrementView(userId); // Increment view count when page loads
+  };
+  // Function to retrieve click count for the current user
+function getClickCount() {
+    // Assuming each user has a unique identifier, for simplicity using "user1" as an example
+    var userId = "user1";
+    var clickCount = localStorage.getItem(userId + '_clickCount');
+    return clickCount ? parseInt(clickCount) : 0;
+  }
+
+  // Function to increment click count for the current user
+  function incrementClick() {
+    var userId = "user1"; // Assuming each user has a unique identifier
+    var clickCount = getClickCount();
+    clickCount++;
+    localStorage.setItem(userId + '_clickCount', clickCount);
+    document.getElementById('click-counter').innerText = 'Click count: ' + clickCount;
+  }
+
+  // Show click count for the current user when page loads
+  window.onload = function() {
+    var clickCount = getClickCount();
+    document.getElementById('click-counter').innerText = 'Click count: ' + clickCount;
   };
 
+
+
+
+
+
+
+
+
+  // Function to retrieve view count for the current user
+  function getViewCount() {
+    // Assuming each user has a unique identifier, for simplicity using "user1" as an example
+    var userId = "user1";
+    var viewCount = localStorage.getItem(userId + '_viewCount');
+    return viewCount ? parseInt(viewCount) : 0;
+  }
+
+  // Function to increment view count for the current user
+  function incrementView() {
+    var userId = "user1"; // Assuming each user has a unique identifier
+    var viewCount = getViewCount();
+    viewCount++;
+    localStorage.setItem(userId + '_viewCount', viewCount);
+    document.getElementById('view-counter').innerText = 'View count: ' + viewCount;
+  }
+
+  // Show view count for the current user when page loads
+  window.onload = function() {
+    var viewCount = getViewCount();
+    document.getElementById('view-counter').innerText = 'View count: ' + viewCount;
+    incrementView(); // Increment view count when page loads
+  };
+
+
+
+
+
+
+    
+
+    
 
 
 // Data for videos and photos
