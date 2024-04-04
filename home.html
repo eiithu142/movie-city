@@ -425,14 +425,20 @@
     grid-template-columns: repeat(3,100px);
    }
      @media(max-width:1000px){
-      .photo-wrapper{
+      .photo-container{
         grid-template-columns: repeat(5,350px);
       }
     }
     @media(min-width:100px){
-      .photo-wrapper{
-        grid-template-columns: repeat(3,110px);
+      .photo-container{
+        grid-template-columns: repeat(3,30%);
       }
+    }
+    .photo-container{
+        align-items: center;
+        display: grid;
+        background-color: black;
+        justify-content: space-between;
     }
    .img{
     align-items: center;
