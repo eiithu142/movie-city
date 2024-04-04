@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -209,7 +210,7 @@
         </div>
              </div>
       </div>
-    </div>
+    
 </body>
 <div class="item">
     <a href="" style="color: black;"><img src="" width="100px"></a>  
@@ -331,16 +332,7 @@
      }
     
   
-   @media(max-width:1000px){
-      .container2{
-        grid-template-columns: repeat(5,350px);
-      }
-    }
-    @media(min-width:100px){
-      .container2{
-        grid-template-columns: repeat(3,30%);
-      }
-    }
+  
    
    .bar{
       font-size: 10px;
@@ -409,27 +401,27 @@
    
    .photo-wrapper{
     align-items: center;
-    justify-content: center;
-    display: grid;
-    
-    grid-template-columns: repeat(3,100px);
+        display: grid;
+        background-color: gray;
+        justify-content: space-between;
    }
+   .photo-container{
+        align-items: center;
+        display: grid;
+        background-color: gray;
+        justify-content: space-between;
+    }
      @media(max-width:1000px){
-      .photo-container{
-        grid-template-columns: repeat(5,350px);
+      .photo-wrapper{
+        grid-template-columns: repeat(5,300px);
       }
     }
     @media(min-width:100px){
-      .photo-container{
+      .photo-wrapper{
         grid-template-columns: repeat(3,30%);
       }
     }
-    .photo-container{
-        align-items: center;
-        display: grid;
-        background-color: black;
-        justify-content: space-between;
-    }
+    
    
     *{
     padding: 0;
