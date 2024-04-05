@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,16 @@
     <title>Action movie</title>
 </head>
 <h1>Action Movie</h1><hr>
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Enter search term">
+    <button onclick="search()">Search</button>
+  </div>
+  
+  <div id="resultsContainer">
+    <h2></h2>
+    <ul id="videoList"></ul>
+    <div id="photoList"></div>
+  </div>
 <ul>
     <li>  <a href="home.html"><h5>HOME <i class="bi bi-house-door-fill"></i></h5></a></li>
     <li>
@@ -39,7 +50,7 @@
         </div>
              
     <div class="wrapper">
-        <a href="https://t.me/c/2023048682/73" style="color: white;"><img src="parallel.jpg"width="100px"><h4>Parallel 2024</h4></a>
+        <a href="" style="color: white;"><img src="parallel.jpg"width="100px"><h4>Parallel 2024</h4></a>
     </div>
         <div class="wrapper">
             <a href="" style="color: aliceblue;"><img src="vvitch.jpg" width="100px"><h4>VVith</h4></a>
@@ -143,6 +154,26 @@
         display: grid;
         background-color: red;
     }
+    .search-container {
+      width: 100%;
+    margin-right: 100px;
+      margin-bottom: 20px;
+    }
+    #videoList {
+      list-style-type: none;
+      padding: 0;
+    }
+    .video-item, .photo-item {
+      margin-bottom: 10px;
+    }
+    .video-item a, .photo-item a {
+      text-decoration: none;
+      color: #333;
+    }
+    .photo-item img {
+      max-width: 200px;
+      max-height: 150px;
+    }
      .container{
         align-items: center;
         display: grid;
@@ -202,4 +233,237 @@ ul li:hover ul.dropdown {
 display: block;
 }
 </style>
+<script>
+    // Function to retrieve view count for the current user
+  function getViewCount(userId) {
+    var viewCount = localStorage.getItem(userId + '_viewCount');
+    return viewCount ? parseInt(viewCount) : 0;
+  }
+
+  // Function to increment view count for the current user
+  function incrementView(userId) {
+    var viewCount = getViewCount(userId);
+    viewCount++;
+    localStorage.setItem(userId + '_viewCount', viewCount);
+    document.getElementById('view-counter').innerText = 'Your view count: ' + viewCount;
+    updateTotalViewCount();
+  }
+
+  // Function to update total view count
+  function updateTotalViewCount() {
+    var totalViewCount = 0;
+    // Loop through localStorage to get view counts of all users
+    for (var i = 0; i < localStorage.length; i++) {
+      var key = localStorage.key(i);
+      if (key.endsWith('_viewCount')) {
+        totalViewCount += parseInt(localStorage.getItem(key));
+      }
+    }
+    document.getElementById('total-view-counter').innerText = 'Total view count: ' + totalViewCount;
+  }
+
+  // Show view count for the current user and total view count when page loads
+  window.onload = function() {
+    var userId = "user1"; // Assuming each user has a unique identifier
+    var viewCount = getViewCount(userId);
+    document.getElementById('view-counter').innerText = 'Your view count: ' + viewCount;
+    updateTotalViewCount();
+    incrementView(userId); // Increment view count when page loads
+  };
+  // Function to retrieve click count for the current user
+function getClickCount() {
+    // Assuming each user has a unique identifier, for simplicity using "user1" as an example
+    var userId = "user1";
+    var clickCount = localStorage.getItem(userId + '_clickCount');
+    return clickCount ? parseInt(clickCount) : 0;
+  }
+
+  // Function to increment click count for the current user
+  function incrementClick() {
+    var userId = "user1"; // Assuming each user has a unique identifier
+    var clickCount = getClickCount();
+    clickCount++;
+    localStorage.setItem(userId + '_clickCount', clickCount);
+    document.getElementById('click-counter').innerText = 'Click count: ' + clickCount;
+  }
+
+  // Show click count for the current user when page loads
+  window.onload = function() {
+    var clickCount = getClickCount();
+    document.getElementById('click-counter').innerText = 'Click count: ' + clickCount;
+  };
+
+
+
+
+
+
+
+
+
+  // Function to retrieve view count for the current user
+  function getViewCount() {
+    // Assuming each user has a unique identifier, for simplicity using "user1" as an example
+    var userId = "user1";
+    var viewCount = localStorage.getItem(userId + '_viewCount');
+    return viewCount ? parseInt(viewCount) : 0;
+  }
+
+  // Function to increment view count for the current user
+  function incrementView() {
+    var userId = "user1"; // Assuming each user has a unique identifier
+    var viewCount = getViewCount();
+    viewCount++;
+    localStorage.setItem(userId + '_viewCount', viewCount);
+    document.getElementById('view-counter').innerText = '' + viewCount;
+  }
+
+  // Show view count for the current user when page loads
+  window.onload = function() {
+    var viewCount = getViewCount();
+    document.getElementById('view-counter').innerText = 'View count: ' + viewCount;
+    incrementView(); // Increment view count when page loads
+  };
+
+  //Data for videos and photos
+const data = {
+      videos: {
+       "furious1":"https://t.me/moviecd69/45",
+       "furious2":"https://t.me/moviecd69/46",
+       "furious3":"https://t.me/moviecd69/47",
+       "furious4":"https://t.me/moviecd69/48",
+       "furious5":"https://t.me/moviecd69/49",
+       "furious6":"https://t.me/moviecd69/50",
+       "furious7":"https://t.me/moviecd69/51",
+       "furious8":"https://t.me/moviecd69/52",
+       
+       "parallel 2024": "https://t.me/c/2023048682/73",
+        "Deah of all around 2024": "",
+        "vvith": "",
+        "happy death day 2019": "",
+        "planetquake 2024": "",
+        "code 8 part 2": "https://t.me/c/2023048682/72",
+        "Easter bloody 2024": "",
+        "imaginary 2024": "",
+        "season of the with  2011": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        
+        
+        "Bl Series": "",
+        "koran movie": "",
+        "Thai movie": "",
+        "Action movie": "",
+        "download": "",
+        "": "",
+        "": "",
+      },
+      photos: {
+
+        "Bl Series": "bl1.jpg",
+        "koran movie": "",
+        "Thai movie": "thai1.jpg",
+        "Action movie": "",
+        "download": "download.html",
+        "": "",
+        "": "",
+      }
+    };
+
+    function search() {
+      const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+      const videoList = document.getElementById('videoList');
+      const photoList = document.getElementById('photoList');
+      videoList.innerHTML = '';
+      photoList.innerHTML = '';
+
+      // Search for matching videos
+      for (const [videoName, videoLink] of Object.entries(data.videos)) {
+        if (videoName.includes(searchTerm)) {
+          const listItem = document.createElement('li');
+          listItem.className = 'video-item';
+
+          const link = document.createElement('a');
+          link.href = videoLink;
+          link.textContent = videoName;
+
+          listItem.appendChild(link);
+          videoList.appendChild(listItem);
+        }
+      }
+
+      // Search for matching photos
+      for (const [photoName, photoLink] of Object.entries(data.photos)) {
+        if (photoName.includes(searchTerm)) {
+          const photoItem = document.createElement('div');
+          photoItem.className = 'photo-item';
+
+          const link = document.createElement('a');
+          link.href = photoLink;
+
+          const image = document.createElement('img');
+          image.src = photoLink;
+          image.alt = photoName;
+
+          link.appendChild(image);
+          photoItem.appendChild(link);
+          photoList.appendChild(photoItem);
+        }
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+    
+ document.addEventListener('DOMContentLoaded', function() {
+    // Get the necessary elements
+    const activeNumberElement = document.getElementById('activeNumber');
+    const increaseButton = document.getElementById('increaseBtn');
+    const decreaseButton = document.getElementById('decreaseBtn');
+
+    // Initial subscriber count
+    let activeNumber = 120;
+
+    // Function to update the display
+    function updateDisplay() {
+        activeNumberElement.textContent = activeNumber;
+    }
+
+    // Function to handle increase button click
+    increaseButton.addEventListener('click', function() {
+        activeNumber++;
+        updateDisplay();
+    });
+
+    // Function to handle decrease button click
+    decreaseButton.addEventListener('click', function() {
+        if (activeNumber > 0) {
+            activeNumber--;
+            
+        }
+    });
+
+    // Update the display initially
+    updateDisplay("activeNumber");
+});
+
+
+
+
+</script>
 </html>
