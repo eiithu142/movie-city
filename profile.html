@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Profile</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .container {
+    max-width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  .username {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .logout-btn {
+    padding: 10px 20px;
+    background-color: #385dff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .logout-btn:hover {
+    background-color: #2e5af8;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="username" id="username"></div>
+  <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<script>
+  window.onload = function() {
+    const savedUsername = localStorage.getItem('username');
+    if (savedUsername) {
+      document.getElementById('username').textContent = `${savedUsername}!`;
+    }
+  };
+
+  function logout() {
+    // Clear username from localStorage
+    localStorage.removeItem('username');
+    // Redirect to the login page
+    window.location.href = 'login.html';
+  }
+</script>
+
+</body>
+</html>
