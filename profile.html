@@ -7,7 +7,7 @@
 <style>
   body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #f8f8f8;
     margin: 0;
     padding: 0;
     display: flex;
@@ -16,56 +16,36 @@
     height: 100vh;
   }
   .container {
-    max-width: 400px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
   }
-  h2 {
-    margin-bottom: 20px;
+  h1 {
     color: #333;
   }
   .username {
+    margin-top: 20px;
     font-size: 24px;
-    margin-bottom: 20px;
-  }
-  .logout-btn {
-    padding: 10px 20px;
-    background-color: #385dff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  .logout-btn:hover {
-    background-color: #2e5af8;
+    color: #666;
   }
 </style>
 </head>
 <body>
 
 <div class="container">
+  <h1>User Profile</h1>
   <div class="username" id="username"></div>
-  <button class="logout-btn" onclick="logout()">Logout</button>
 </div>
 
 <script>
   window.onload = function() {
+    // Retrieve saved username from localStorage
     const savedUsername = localStorage.getItem('username');
     if (savedUsername) {
-      document.getElementById('username').textContent = `${savedUsername}!`;
+      document.getElementById('username').textContent = `Welcome, ${savedUsername}!`;
+    } else {
+      // If no username is saved, redirect to the login page
+      window.location.href = 'login.html';
     }
   };
-
-  function logout() {
-    // Clear username from localStorage
-    localStorage.removeItem('username');
-    // Redirect to the login page
-    window.location.href = 'login.html';
-  }
 </script>
 
 </body>
