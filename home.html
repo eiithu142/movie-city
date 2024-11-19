@@ -10,8 +10,34 @@
 
 
  <div class="baby">
-<h1>Movie City</h1>
-
+    <header class="header">
+        <div class="user-info">
+          <img src="romatic.jpg" alt="User Avatar" class="avatar">
+          <div>
+              
+            <h2>Movi<span class="highlight">e+</span></h2>
+            <p>Enjoy your favorite movie</p>
+          </div>
+          
+        </div>
+        <div class="notifications">
+          <span class="bell-icon" onclick="toggleNotifications()">🔔</span>
+          
+          <div id="notification-popup" class="notification-popup hidden">
+            <!-- Movie Ad Notification -->
+  
+    <div class="notification" id="movieAdNotification">
+      <img src="venon.jpg" alt="Movie Icon" class="icon">
+      <div class="message">
+        Check out the latest movie! <a href="romatic.jpg" class="view-link" target="_blank">Click to view</a>.
+      </div>
+      <button class="close-btn" onclick="closeNotification()">×</button>
+    </div>
+  
+          </div>
+        </div>
+        
+      </header>
 
 <div class="view-count-container"><i class="bi bi-eye"></i>
   <div class="view-count" id="view-counter"></div>
@@ -260,6 +286,199 @@
     border: none;
     border-radius: 5px;
   }
+  body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.notification {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #2739ff;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.message {
+  flex-grow: 1;
+}
+
+.view-link {
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.view-link:hover {
+  color: #ff3b3b;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+    /* styles.css */
+    /* Add styles for notifications */
+.notification-popup {
+  position: absolute;
+  top: 60px; /* Adjust based on bell icon position */
+  right: 20px; /* Adjust based on your layout */
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+}
+.logo h2 {
+    margin-left: 30px;
+    margin-top: 20px;
+  font-size: 4em;
+  margin: 15px 0;
+}
+
+.highlight {
+  color: #e50914;
+}
+
+.notification-popup ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+.notification-popup ul li {
+  margin: 5px 0;
+}
+
+.hidden {
+  display: none;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.profile-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.notifications {
+  font-size: 20px;
+}
+
+.search-bar {
+  margin: 20px 0;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.movies-section, .tv-section {
+  margin-bottom: 30px;
+}
+
+.movies-grid, .tv-grid {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+}
+
+.movie-card, .tv-card {
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  padding: 10px;
+  min-width: 150px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.movie-card img, .tv-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.movie-card:hover, .tv-card:hover {
+  transform: scale(1.05);
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-around;
+  background-color: #1e1e1e;
+  padding: 10px 0;
+  border-radius: 10px;
+}
+
+.nav-bar button {
+  background: none;
+  color: #ffffff;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.nav-bar button:hover {
+  color: #ff4500;
+}
+.profile{
+  text-decoration: none;
+  color: aliceblue;
+  
+}
+.nav-bar .profile:hover {
+  color: #ff4500;
+}
     /* CSS for styling */
   .search-container {
       width: 100%;
